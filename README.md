@@ -1,6 +1,6 @@
 BBBlfs
 ======
-[![Build Status](https://travis-ci.org/ungureanuvladvictor/BBBlfs.svg?branch=osx)](https://travis-ci.org/ungureanuvladvictor/BBBlfs)
+[![Build Status](https://travis-ci.org/moto-timo/BBBlfs.svg?branch=osx)](https://travis-ci.org/moto-timo/BBBlfs)
 
 BeagleBone Black OS X Flash System
 
@@ -52,7 +52,7 @@ The full system works as follow:
 * Grab the latest U-Boot sources from [git://git.denx.de/u-boot.git](git://git.denx.de/u-boot.git)
 * Checkout commit id 524123a70761110c5cf3ccc5f52f6d4da071b959
 * Install your favourite cross-compiler, I am using arm-linux-gnueabihf-
-* Apply this patch to U-Boot sources [https://raw.githubusercontent.com/ungureanuvladvictor/BBBlfs/master/tools/USB_FLash.patch](https://raw.githubusercontent.com/ungureanuvladvictor/BBBlfs/master/tools/USB_FLash.patch )
+* Apply this patch to U-Boot sources [https://raw.githubusercontent.com/moto-timo/BBBlfs/master/tools/USB_FLash.patch](https://raw.githubusercontent.com/moto-timo/BBBlfs/master/tools/USB_FLash.patch )
 
 ```bash
 make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- am335x_evm_usbspl_defconfig
@@ -83,7 +83,7 @@ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- zImage dtbs modules -j4
 mkdir initramfs
 mkdir -p initramfs/{bin,sbin,etc,proc,sys}
 cd initramfs
-wget -O init https://raw.githubusercontent.com/ungureanuvladvictor/BBBlfs/master/tools/init
+wget -O init https://raw.githubusercontent.com/moto-timo/BBBlfs/master/tools/init
 chmod +x init
 ```
 * Now we need to cross-compile BusyBox for our ARM architecture
@@ -120,7 +120,7 @@ mv initramfs.gz /path/to/maker/folder/ramdisk.cpio.gz
 sudo apt-get update
 sudo apt-get install u-boot-tools device-tree-compiler
 cd /path/to/maker/folder
-wget -O maker.its https://raw.githubusercontent.com/ungureanuvladvictor/BBBlfs/master/tools/maker.its
+wget -O maker.its https://raw.githubusercontent.com/moto-timo/BBBlfs/master/tools/maker.its
 cp /path/to/kernel/arch/arm/boot/zImage .
 cp /path/to/kernel/arch/arm/boot/dts/am335x-boneblack.dtb .
 mkimage -f maker.its FIT
@@ -129,5 +129,7 @@ mkimage -f maker.its FIT
 
 #Contact
 vvu@vdev.ro
+moto-timo@gmail.com
 
 vvu on #beagle, #beagle-gsoc
+moto-timo on #beagle, #beagle-gsoc
