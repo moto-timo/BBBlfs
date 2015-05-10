@@ -5,9 +5,9 @@ before_install:
   - brew install libusb --without-runtime-logging
   - brew install doxygen graphviz
 
-branches:
+tags:
   only:
-    - osx
+    - BBBlfs-osx_v0.1.0
 
 script:
   - ./autogen.sh
@@ -19,3 +19,11 @@ after_success:
   - xcodebuild build
   - pkgbuild --analyze --root ./Build/Release/ bbblfs-codeless.plist
   - pkgbuild --install-location /System/Library/Extensions --root ./Build/Release/ --scripts ./scripts --component-plist bbblfs-codeless.plist bbblfs-codeless-kext.pkg
+  
+  deploy:
+  provider: releases
+  api-key: e246f674ee2abc04bd1434c31a9ff770712799ed
+  file: bblfs-codeless-kext.pkg
+  skip_cleanup: true
+  on:
+    tags: true
