@@ -21,13 +21,12 @@ before_deploy:
   - git config --global user.name "Travis CI"
   - export GIT_TAG=$TRAVIS_BRANCH-0.1.$TRAVIS_BUILD_NUMBER
   - git tag $GIT_TAG -a -m "Generated tag from Travis-CI for build $TRAVIS_BUILD_NUMBER"
-  - git push -q https://$TAGPERM@github.com/moto-timo/BBBlfs --tags
+  - git push -q https://$GITPERM@github.com/moto-timo/BBBlfs --tags
   - ls -R
 
 deploy:
   provider: releases
-  api_key:
-    secure: CnwiMaH2FJTQ29N/O9vhwonH6thlsC1EZu8Bk6YK9n5XPfcQH7+8Pr3rymKw2ymufNzp3MuxDdnsgC7OqsfPJ0VWa2jlvaAIwiejZiJU00tNLrdrPq5f0XeDs00l/Bi1i4QQysVdG7mHi53pCoUg7uW8XH4UI8CdzUCHUHORVeWlIuvji7WlE/NpZxrhYUXu+9VFKUUZIW+XQ/GK+KWhXK+QgMyr2+PzOre477JQT3j5OYC30YZJoqGFCvi/IoKNlC3i7/H/VzqiQtOpYkCqkSWVdw7J540+qt4qSRpsSpsCZJIN6Jumu7SYSwMxfGT1XrLi9iHlV8FtxLICukoBH7PAuAxQFD/CqH7xAf99QcmxEaKuHVB3FI7apMhgEx1DQsJbZoP1coPrpS8C8F05ER06ZKpFYFlv13y54+YAtN4AfXm88Eo++v+gaEFbBd9EVz97EFPDgOTF61Nn8RQKLP9hhg80siLtYlUHbrGLo8RdMl9+CqVqsGDphi0fXUxetK/RvYvj83oKCiwlAlyKupupeLb94vJbdApShUoqTodcBhKHwEl+zUHDcKFF8T/Hd23UnS1BogvbsTnMUE3S2JyvVaHGobCZGPl0Wi8mJxLIni9jsdUtB9uijhszb2FXfSPUGDd9Wy4jbkFOdIPszvzJouKiU3OlS/IqAwMwGA4=
+  api_key: $GITPERM
   file: bbblfs-codeless-kext.pkg
   on:
     repo: moto-timo/BBBlfs
