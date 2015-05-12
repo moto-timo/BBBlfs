@@ -1,21 +1,26 @@
 language: objective-c
+
 before_install:
 - brew update
 - brew install libusb --without-runtime-logging
 - brew install doxygen graphviz
+
 branches:
   only:
   - osx
+
 script:
 - "./autogen.sh"
 - "./configure"
 - make
+
 after_success:
 - cd bbblfs-codeless-kext
 - xcodebuild build
 - pkgbuild --analyze --root ./Build/Release/ bbblfs-codeless.plist
 - pkgbuild --install-location /System/Library/Extensions --root ./Build/Release/ --scripts
   ./scripts --component-plist bbblfs-codeless.plist bbblfs-codeless-kext.pkg
+
 before_deploy:
   - git config --global user.email "builds@travis-ci.org"
   - git config --global user.name "Travis CI"
@@ -31,7 +36,6 @@ deploy:
   on:
     repo: moto-timo/BBBlfs
     branch: osx
-
 env:
   global:
-    secure: CnwiMaH2FJTQ29N/O9vhwonH6thlsC1EZu8Bk6YK9n5XPfcQH7+8Pr3rymKw2ymufNzp3MuxDdnsgC7OqsfPJ0VWa2jlvaAIwiejZiJU00tNLrdrPq5f0XeDs00l/Bi1i4QQysVdG7mHi53pCoUg7uW8XH4UI8CdzUCHUHORVeWlIuvji7WlE/NpZxrhYUXu+9VFKUUZIW+XQ/GK+KWhXK+QgMyr2+PzOre477JQT3j5OYC30YZJoqGFCvi/IoKNlC3i7/H/VzqiQtOpYkCqkSWVdw7J540+qt4qSRpsSpsCZJIN6Jumu7SYSwMxfGT1XrLi9iHlV8FtxLICukoBH7PAuAxQFD/CqH7xAf99QcmxEaKuHVB3FI7apMhgEx1DQsJbZoP1coPrpS8C8F05ER06ZKpFYFlv13y54+YAtN4AfXm88Eo++v+gaEFbBd9EVz97EFPDgOTF61Nn8RQKLP9hhg80siLtYlUHbrGLo8RdMl9+CqVqsGDphi0fXUxetK/RvYvj83oKCiwlAlyKupupeLb94vJbdApShUoqTodcBhKHwEl+zUHDcKFF8T/Hd23UnS1BogvbsTnMUE3S2JyvVaHGobCZGPl0Wi8mJxLIni9jsdUtB9uijhszb2FXfSPUGDd9Wy4jbkFOdIPszvzJouKiU3OlS/IqAwMwGA4=
+  - secure: HnUFh/+rM7FOT5ZnYeqcYGr0FHV3NdNxo6f8iEMo3SMVfHjwt7EKPNrEkuRUIenrRGJt5+D1BLWSOMMUjadPpIZyE7We6KyaM84MPsZuyNi2zOV6/ytVOPSq4zj91YVcdcE7/jg1Ok0fMu+WiSNAmju2wl2X/NnYT5o60bV/9RIe0qWGAvaqc1RqLO1EFziIEtRDLYIgvgneSAehQ1rgl1FXnQg/p+79HnTvVUCN986YMC0vndqXPQJ1a59xe7A32fPwgN5eTNiq/C1sXhGQZb8LauOAubpTFK5RDxoK8arb4CDqDzwbdZK7CzPJKkCOgK3/PqgG74aSS5yQlGU4gh1x5/ds02IndKG57qy6AS7EvIJkjVGybrhwT1mWo25xVnS+e9jrbLkibFBJ5AmsTgnz5rWs86ee1bbqY6/qlrpACXduFnr0ZtrBno+mDBVQFB3qEvJWv2auhxNbtVcO2MQ850WSyq0eTx+LK4b5qqAojZGmR1wXP9+z7s9MoDFCwBL6nuDgtCgo+B4Bkp/Pm4N/yX9l10VFAVsBDt/i4qRxVDHbdcTX9gPG1qWsHuK6pG5C4hFYmaKl111baeBl0GOppGvPuzVmiJx8zGGRDU2Ls+GxJBfhMM43wkdADqdYhqf6Vn/dOZBBPj3RZYynYaoqbFLCC/E0OLd1FGJMd04=
