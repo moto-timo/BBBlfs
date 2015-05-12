@@ -28,6 +28,7 @@ before_deploy:
   - git add bbblfs-codeless-kext.pkg
   - git add bbblfs-codeless.plist
   - git add build
+  - git commit -m "Generated commit from Travis-CI for build $TRAVIS_BUILD_NUMBER"
   - git tag $GIT_TAG -a -m "Generated tag from Travis-CI for build $TRAVIS_BUILD_NUMBER"
   - git push -q https://$GITPERM@github.com/moto-timo/BBBlfs --tags
   - ls -R
