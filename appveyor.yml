@@ -1,0 +1,7 @@
+version: 1.0.{build}
+branches:
+  only:
+  - windows-partial
+build:
+  project: BBBlfs.sln
+  verbosity: minimal
