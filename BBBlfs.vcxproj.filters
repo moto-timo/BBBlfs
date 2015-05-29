@@ -87,7 +87,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\Downloads\beagle.ico">
+    <Image Include="src\beagle.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -117,7 +117,7 @@ copy /Y "$(ProjectDir)bins\spl" "$(OutputPath)spl"</Command>
     <ResourceCompile Include="BBBlfs.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\Downloads\beagle.ico" />
+    <Image Include="src\beagle.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
