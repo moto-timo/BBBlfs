@@ -5,3 +5,12 @@ branches:
 build:
   project: BBBlfs.sln
   verbosity: minimal
+deploy:
+    # Deploy to GitHub Releases
+  - provider: GitHub
+    artifact: C:\projects\bbblfs\Debug\BBBlfs.exe         # upload all NuGet packages to release assets
+    draft: false
+    prerelease: false
+    on:
+      branch: windows-partial                             # release from windows-partial branch only
+      appveyor_repo_tag: true                             # deploy on tag push only
