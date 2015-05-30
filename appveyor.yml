@@ -4,13 +4,14 @@ branches:
   - windows-partial
 build:
   project: BBBlfs.sln
-  verbosity: minimal
+  verbosity: normal
 deploy:
     # Deploy to GitHub Releases
   - provider: GitHub
     auth_token:
       secure: p8g7o3mwrv7JWL6JdZ7M+rG/LsbKMvY/Wr9paPFZ9qlYcWjT8KwJNN84LTK70UEo # your encrypted token from GitHub
-    artifact: C:\projects\bbblfs\Debug\BBBlfs.exe                              # upload all NuGet packages to release assets
+    release: BBBlfs-windows-partial_v$(appveyor_build_version)
+    artifact: bbblfs\$(configuration)\BBBlfs.exe                               # upload all BBBlfs.exe artifacts to release assets
     draft: false
     prerelease: false
     on:
