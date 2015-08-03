@@ -30,6 +30,7 @@ deploy:
   file: "bbblfs-codeless-kext.pkg"
   skip_cleanup: true
   on:
+    branch: osx
     tags: true
 env:
   global:
