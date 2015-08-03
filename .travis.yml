@@ -26,8 +26,9 @@ before_deploy:
 
 deploy:
   provider: releases
-  api_key: $GITPERM
-  file: bbblfs-codeless-kext.pkg
+  api_key: "$GITPERM"
+  file: "bbblfs-codeless-kext.pkg"
+  skip_cleanup: true
   on:
     tags: true
 env:
