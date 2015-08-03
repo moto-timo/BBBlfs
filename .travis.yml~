@@ -22,6 +22,15 @@ after_success:
   ./scripts --component-plist bbblfs-codeless.plist bbblfs-codeless-kext.pkg
 
 before_deploy:
+  - git config --global user.email "builds@travis-ci.org"
+  - git config --global user.name "Travis CI"
+  - export GIT_TAG=$TRAVIS_BRANCH-0.1.$TRAVIS_BUILD_NUMBER
+  - git add bbblfs-codeless-kext.pkg
+  - git add bbblfs-codeless.plist
+  - git add build
+  - git commit -m "Generated commit from Travis-CI for build $TRAVIS_BUILD_NUMBER"
+  - git tag $GIT_TAG -a -m "Generated tag from Travis-CI for build $TRAVIS_BUILD_NUMBER"
+  - git push -q https://$GITPERM@github.com/moto-timo/BBBlfs --tags
   - ls -R
 
 deploy:
